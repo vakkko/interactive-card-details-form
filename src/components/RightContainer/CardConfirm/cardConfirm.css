@@ -1,0 +1,41 @@
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-container > div {
+  margin-top: 3.5rem;
+  margin-bottom: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.confirm-container h1 {
+  color: #21092f;
+  font-size: 28px;
+  line-height: 35.73px;
+  letter-spacing: 3.422222137451172px;
+  text-align: center;
+}
+
+.confirm-container > div > p {
+  font-size: 1.8rem;
+  line-height: 2.297rem;
+  color: #8f8694;
+}
+
+.btn-continue {
+  color: #ffffff;
+  background-color: #21092f;
+  width: 120%;
+  padding: 1rem 0;
+  border-radius: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.297rem;
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 2.5rem;
+}
+
+.back-card {
+  margin-left: 13rem;
+}
+
+.front-card-container {
+  position: relative;
+}
+
+.circles {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+}
+
+.personal-card-details {
+  padding: 0 2rem;
+  position: absolute;
+  bottom: 3rem;
+  color: white;
+  width: 100%;
+}
+
+.personal-card-details > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 0 2rem;
+}
+
+.personal-card-details > p {
+  font-size: 2.8rem;
+  line-height: 3.573rem;
+  letter-spacing: 3.422222137451172px;
+  text-align: center;
+}
+
+.personal-card-details div p,
+.cvc,
+.month-year span {
+  font-size: 1.4rem;
+  line-height: 1.786rem;
+  letter-spacing: 2px;
+}
+
+.back-card-container {
+  position: relative;
+}
+
+.cvc {
+  position: absolute;
+  color: white;
+  top: 11rem;
+  right: 5.5rem;
+}
