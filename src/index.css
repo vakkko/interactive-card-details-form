@@ -20,3 +20,11 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 49.0625rem) {
+  body {
+    background-size: 100% 50%;
+    overflow-x: hidden;
+    height: auto;
+  }
+}

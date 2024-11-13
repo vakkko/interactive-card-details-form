@@ -3,4 +3,12 @@ main {
   align-items: center;
   justify-content: center;
   gap: 12rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 49.0625rem) {
+  main {
+    flex-direction: column;
+    gap: 42rem;
+  }
 }

@@ -168,6 +168,7 @@ export default function CardForm({
         onChange={onNameChange}
         type="text"
         placeholder="e.g. Jane Appleseed"
+        maxLength={42}
       />
       {emptyCardName && <p className="error-message">Can’t be blank</p>}
       <br />

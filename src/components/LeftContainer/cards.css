@@ -63,9 +63,20 @@
   right: 5.5rem;
 }
 
-/* .back-card {
-  width: 76%;
+@media screen and (max-width: 49.0625rem) {
+  .front-card-mobile {
+    position: absolute;
+    top: 15.3rem;
+    z-index: 1;
+    right: -10rem;
+  }
+  .back-card-mobile {
+    position: absolute;
+    top: 1.5rem;
+    right: -25rem;
+  }
+
+  .personal-details {
+    width: 100% !important;
+  }
 }
-.front-card {
-  width: 100%;
-} */
