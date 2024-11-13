@@ -1,11 +1,12 @@
 import "./cards.css";
-type CardsProps = {
+
+interface CardsProps {
   cardNumber: string;
   cardName: string;
   cardMonth: string;
   cardYear: string;
   cardCvc: string;
-};
+}
 export default function Cards({
   cardNumber,
   cardName,
@@ -13,12 +14,6 @@ export default function Cards({
   cardYear,
   cardCvc,
 }: CardsProps) {
-  const stringNumb = cardNumber.toString();
-  let cardNumbers: string = "";
-  for (let i = 0; i < stringNumb.length; i = i + 4) {
-    cardNumbers = cardNumbers + stringNumb.slice(i, i + 4) + " ";
-  }
-
   return (
     <div className="cards-container">
       <div className="front-card-container">
@@ -27,9 +22,13 @@ export default function Cards({
           src="./images/card-logo.svg"
           alt="two circle"
         />
-        <img src="./images/bg-card-front.png" alt="Front side of card" />
+        <img
+          className="front-card"
+          src="./images/bg-card-front.png"
+          alt="Front side of card"
+        />
         <div className="personal-card-details">
-          <p>{cardNumber ? cardNumbers : "0000 0000 0000 0000"}</p>
+          <p>{cardNumber ? cardNumber : "0000 0000 0000 0000"}</p>
           <div>
             <p>{cardName ? cardName : "JANE APPLESEED"}</p>
             <div className="month-year">

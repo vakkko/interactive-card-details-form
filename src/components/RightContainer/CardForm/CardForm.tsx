@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./cardForm.css";
-type cardProps = {
+import {
+  handleNameChange,
+  handleNumberChange,
+  handleDateChange,
+} from "../../../utils/cardUtils";
+
+interface cardProps {
   cardNumber: string;
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   cardName: string;
@@ -12,7 +18,7 @@ type cardProps = {
   cardCvc: string;
   setCardCvc: React.Dispatch<React.SetStateAction<string>>;
   setShowCardConfirm: (value: boolean) => void;
-};
+}
 
 export default function CardForm({
   cardNumber,
@@ -45,94 +51,72 @@ export default function CardForm({
   const [incompleteCardYear, setIncompleteCardYear] = useState<boolean>(false);
   const [incompleteCardCvc, setIncompleteCardCvc] = useState<boolean>(false);
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const trimedName = event.target.value.trim();
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const trimedName: string = handleNameChange(event);
     setCardName(trimedName);
-
     if (trimedName.length > 0) {
       setEmptyCardName(false);
     }
   };
 
-  const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const numbValue = event.target.value.trim();
+  const onNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { formattedNumber, isValid, length } = handleNumberChange(event);
+    setCardNumber(formattedNumber);
+    setErrorCardNumber(!isValid);
 
-    if (!isNaN(Number(numbValue))) {
-      setCardNumber(numbValue);
-      setErrorCardNumber(false);
-    } else {
-      setCardNumber(numbValue);
-      setErrorCardNumber(true);
-    }
-
-    if (numbValue.length > 0) {
+    if (length > 0) {
       setEmptyCardNumber(false);
     }
-    if (numbValue.length === 16) {
+    if (length === 16) {
       setIncompleteCardNumber(false);
     }
   };
 
-  const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const monthValue = event.target.value.trim();
+  const onMonthChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { dateValue, length, isValid } = handleDateChange(event);
 
-    if (!isNaN(Number(monthValue))) {
-      setCardMonth(monthValue);
-      setErrorCardMonth(false);
-    } else {
-      setCardMonth(monthValue);
-      setErrorCardMonth(true);
-    }
+    setCardMonth(dateValue);
+    setErrorCardMonth(!isValid);
 
-    if (monthValue.length > 0) {
+    if (length > 0) {
       setEmptyCardMonth(false);
     }
-    if (monthValue.length === 2) {
+    if (length === 2) {
       setIncompleteCardNumber(false);
     }
   };
 
-  const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const yearValue = event.target.value.trim();
+  const onYearChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { dateValue, length, isValid } = handleDateChange(event);
 
-    if (!isNaN(Number(yearValue))) {
-      setCardYear(yearValue);
-      setErrorCardYear(false);
-    } else {
-      setCardYear(yearValue);
-      setErrorCardYear(true);
-    }
+    setCardYear(dateValue);
+    setErrorCardYear(!isValid);
 
-    if (yearValue.length > 0) {
+    if (length > 0) {
       setEmptyCardYear(false);
     }
 
-    if (yearValue.length === 2) {
+    if (length === 2) {
       setIncompleteCardYear(false);
     }
   };
 
-  const handleCvcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const cvcValue = event.target.value.trim();
+  const onCvcChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { dateValue, isValid, length } = handleDateChange(event);
 
-    if (!isNaN(Number(cvcValue))) {
-      setCardCvc(cvcValue);
-      setErrorCardCvc(false);
-    } else {
-      setCardCvc(cvcValue);
-      setErrorCardCvc(true);
-    }
+    setCardCvc(dateValue);
+    setErrorCardCvc(!isValid);
 
-    if (cvcValue.length > 0) {
+    if (length > 0) {
       setEmptyCardCvc(false);
     }
 
-    if (cvcValue.length === 3) {
+    if (length === 2) {
       setIncompleteCardCvc(false);
     }
   };
 
-  const onButtonClick = () => {
+  const onButtonClick = (): void => {
     if (cardName.length === 0) {
       setEmptyCardName(true);
     }
@@ -168,7 +152,7 @@ export default function CardForm({
 
     if (
       cardName.length > 0 &&
-      cardNumber.length === 16 &&
+      cardNumber.length === 19 &&
       cardMonth.length === 2 &&
       cardCvc.length === 3 &&
       cardYear.length === 2
@@ -181,7 +165,7 @@ export default function CardForm({
     <div className="personal-details">
       <label>CARDHOLDER NAME</label>
       <input
-        onChange={handleNameChange}
+        onChange={onNameChange}
         type="text"
         placeholder="e.g. Jane Appleseed"
       />
@@ -189,11 +173,11 @@ export default function CardForm({
       <br />
       <label>CARD NUMBER</label>
       <input
-        onChange={handleNumberChange}
+        onChange={onNumberChange}
         value={cardNumber}
         type="text"
         placeholder="Card Number"
-        maxLength={16}
+        maxLength={19}
       />
       {errorCardNumber && (
         <p className="error-message ">Wrong format, numbers only</p>
@@ -214,19 +198,19 @@ export default function CardForm({
         <div className="month-year-cvc-inputs">
           <input
             maxLength={2}
-            onChange={handleMonthChange}
+            onChange={onMonthChange}
             type="text"
             placeholder="MM"
           />
           <input
             maxLength={2}
-            onChange={handleYearChange}
+            onChange={onYearChange}
             type="text"
             placeholder="YY"
           />
           <input
             maxLength={3}
-            onChange={handleCvcChange}
+            onChange={onCvcChange}
             type="text"
             placeholder="CVC"
           />

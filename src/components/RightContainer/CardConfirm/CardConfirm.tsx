@@ -1,12 +1,13 @@
 import "./cardConfirm.css";
-type cardProps = {
+
+interface cardProps {
   setShowCardConfirm: (value: boolean) => void;
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   setCardName: React.Dispatch<React.SetStateAction<string>>;
   setCardMonth: React.Dispatch<React.SetStateAction<string>>;
   setCardYear: React.Dispatch<React.SetStateAction<string>>;
   setCardCvc: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 export default function CardConfirm({
   setShowCardConfirm,

@@ -13,7 +13,7 @@ html {
 body {
   font-family: "Space Grotesk", sans-serif;
   background-image: url(../public/images/bg-main-desktop.png);
-  background-size: 33vw 100vh;
+  background-size: 37%;
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;

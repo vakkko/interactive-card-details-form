@@ -37,13 +37,13 @@ function App() {
         />
       ) : (
         <CardConfirm
-         setShowCardConfirm={setShowCardConfirm}
-         setCardNumber = {setCardNumber}
-         setCardName = {setCardName}
-         setCardMonth = {setCardMonth}
-         setCardYear = {setCardYear}
-         setCardCvc = {setCardCvc}
-         />
+          setShowCardConfirm={setShowCardConfirm}
+          setCardNumber={setCardNumber}
+          setCardName={setCardName}
+          setCardMonth={setCardMonth}
+          setCardYear={setCardYear}
+          setCardCvc={setCardCvc}
+        />
       )}
     </main>
   );
